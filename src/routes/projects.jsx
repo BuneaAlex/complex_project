@@ -14,11 +14,11 @@ function Projects() {
     const projectsList = useSelector(state => state.counterReducer.projects)
     const employees = useSelector(state => state.counterReducer.employees);
     const statusRequiredLeader = "Experienced"
-    const [leadersList,setLeadersList] = useState([])
-    const [membersList,setMembersList] = useState([])
+    const [leadersList,setLeadersList] = useState([]) 
+    const [membersList,setMembersList] = useState([]) //the list of members that have NOT been chosen yet for the project
     const [selectedMember,setSelectedMember] = useState({})
     const [selectedLeader,setSelectedLeader] = useState({})
-    const [selectedMemberList,setSelectedMemberList] = useState([])
+    const [selectedMemberList,setSelectedMemberList] = useState([])//the list of members that HAVE been chosen for the project
 
 
     const handleClick = () =>
@@ -67,6 +67,7 @@ function Projects() {
         return project
     }
 
+    //a new project is added to the database
     const refreshData = (data) =>
     {
         const options = {

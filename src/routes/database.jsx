@@ -9,8 +9,8 @@ function Database()
 {
     const employees = useSelector(state => state.counterReducer.employees);
     const [searchWord,setSearchWord] = useState('')
-    const [employeeSearch,setEmployeeSearch] = useState([])
-    const [employeeStatusSearch,setEmployeeStatusSearch] = useState([])
+    const [employeeSearch,setEmployeeSearch] = useState([]) //employee list searched by name
+    const [employeeStatusSearch,setEmployeeStatusSearch] = useState([])//employee list searched by status
     const statusList = ["New","Terminated","Experienced","Leaving","Active"]
 
     const handleOnChange = (e) =>

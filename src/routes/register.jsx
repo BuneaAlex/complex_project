@@ -24,8 +24,9 @@ function Register()
     const employees = useSelector(state => state.counterReducer.employees); 
     const count  = employees.length;
     const [submitSafe,setSubmitSafe] = useState(false);
-    const [errorMessage,setErrorMessage] = useState([]);
+    const [errorMessage,setErrorMessage] = useState([]);//error list from the form
 
+    //new employee registered
     const refreshData = (data) =>
     {
         const options = {
@@ -44,6 +45,7 @@ function Register()
         window.location.reload(false);
       }
 
+    //if the there is no error, then the new employee is registered, otherwise the user get a error message
     const handleClick = errors =>
     {
         if(Object.values(errors).length === 0)
