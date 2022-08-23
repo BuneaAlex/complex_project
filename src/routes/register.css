@@ -1,0 +1,104 @@
+.grid-register-text-field1
+{
+    grid-area: text-field1;
+}
+
+.grid-register-text-field2
+{
+    grid-area: text-field2;
+}
+
+.grid-register-text-field3
+{
+    grid-area: text-field3;
+}
+
+.grid-register-text-field4
+{
+    grid-area: text-field4;
+}
+
+.grid-register-text-field5
+{
+    grid-area: text-field5;
+}
+
+.grid-register-text-field6
+{
+    grid-area: text-field6;
+}
+
+.grid-register-img
+{
+    grid-area: img;
+}
+
+.grid-register-span
+{
+    grid-area: span;
+}
+
+.grid-register-submit-button
+{
+    grid-area: rsb;
+}
+
+
+.grid-register
+{
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+        "text-field1 text-field1 img"
+        "text-field2 text-field2 img"
+        "text-field3 text-field3 img"
+        "text-field4 text-field4 img"
+        "text-field5 text-field5 img"
+        "text-field6 text-field6 img"
+        "span span span"
+        "rsb rsb ."
+    ;
+}  
+
+
+@media (max-width: 600px) {
+    .grid-register
+    {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        "text-field1 text-field1"
+        "text-field2 text-field2"
+        "text-field3 text-field3"
+        "text-field4 text-field4"
+        "text-field5 text-field5"
+        "text-field6 text-field6"
+        "span span"
+        'img img'
+        "rsb rsb"
+    ;
+    }  
+}
+
+@media (max-width: 400px) {
+    .grid-register
+    {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        'img img'
+        "text-field1 text-field1"
+        "text-field2 text-field2"
+        "text-field3 text-field3"
+        "text-field4 text-field4"
+        "text-field5 text-field5"
+        "text-field6 text-field6"
+        "span span"
+        "rsb rsb"
+    ;
+    }  
+}
+

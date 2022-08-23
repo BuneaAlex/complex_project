@@ -1,0 +1,52 @@
+.grid-navbar
+{
+    grid-area: navbar;
+}
+
+.grid-sidebar
+{
+    display: flex;
+    margin: 0.1rem;
+    grid-area: sidebar;
+    height: 100%;
+    width: 100%;
+}
+
+.grid-content
+{
+    grid-area: gcontent;
+}
+
+.App
+{
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr 8fr;
+    grid-template-areas:
+      "navbar navbar"
+      "sidebar gcontent";
+        
+}
+
+.navbar
+{
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 1rem;
+    min-width: fit-content;
+}
+
+.navbar a
+{
+    color: pink;
+    text-decoration: none;
+}
+
+.flex-column 
+{
+    border-style: groove;
+    border-color: blue;
+    border-radius: 2%;
+    background-color: ghostwhite;
+}

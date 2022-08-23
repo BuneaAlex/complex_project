@@ -1,0 +1,55 @@
+.grid-textfield1
+{
+    grid-area: tf1;
+}
+
+.grid-textfield2
+{
+    grid-area: tf2;
+}
+
+.grid-textfield3
+{
+    grid-area: tf3;
+}
+
+.grid-span
+{
+    grid-area: gs;
+}
+
+.grid-submit-button
+{
+    grid-area: sb;
+}
+
+.grid-update-button
+{
+    grid-area: ub;
+}
+
+.grid-delete-button
+{
+    grid-area: db;
+}
+
+.grid-confirm-update-button
+{
+    grid-area: cub;
+}
+
+
+.management-container
+{
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "tf1 tf1 sb ."
+    "gs gs gs gs"
+    "ub db . ."
+    "tf2 tf2 . ."
+    "tf3 tf3 . ."
+    "cub cub . ."
+    ;    
+}

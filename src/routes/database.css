@@ -1,0 +1,39 @@
+.grid-table
+{
+    grid-area: emp_table;
+}
+
+.grid-search
+{
+    grid-area: search;
+}
+
+.grid-filter
+{
+    grid-area: filter;
+}
+
+
+.grid-database-container
+{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap: 0.5rem;
+    grid-template-areas: 
+    'emp_table emp_table search'
+    'emp_table emp_table filter'
+    ;
+}
+
+@media (max-width: 1000px)
+{
+    .grid-database-container
+    {
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-areas: 
+    'emp_table emp_table'
+    'search filter'
+    ;
+    }
+}

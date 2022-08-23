@@ -1,0 +1,85 @@
+.first-row
+{
+    display: flex;
+    gap: -1rem;
+}
+
+.first-row > *
+{
+    flex: 1;
+}
+
+.add-button
+{
+    margin-left: 0cm;
+    width: auto;
+}
+
+.add-button span
+{
+    font-family: "Times New Roman";
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.projects-container-col1 Button
+{
+    width:fit-content;
+}
+
+.row-padding
+{
+    padding-bottom: 0.5cm;
+}
+
+.grid-projects-text-field1
+{
+    grid-area: ptf1;
+}
+
+.grid-projects-text-field2
+{
+    grid-area: ptf2;
+}
+
+.grid-projects-leader-filter dropdown
+{
+    grid-area: leader_fil;
+}
+
+.grid-projects-member-filter dropdown
+{
+    grid-area: member_fil;
+}
+
+.grid-projects-leader
+{
+    grid-area: leader;
+}
+
+.grid-projects-members
+{
+    grid-area: members;
+}
+
+.grid-projects-submit-button
+{
+    grid-area: button;
+    
+}
+
+.grid-projects-form
+{
+    display: grid;
+    gap:0.5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    'ptf1 ptf1'
+    'ptf2 ptf2'
+    'leader_fil member_fil'
+    'leader leader'
+    'members members'
+    'button button'
+    ;
+
+}
