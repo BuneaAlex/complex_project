@@ -32,7 +32,6 @@
 {
     display: flex;
     flex-wrap: wrap;
-
     gap: 1rem;
     min-width: fit-content;
 }
@@ -43,10 +42,29 @@
     text-decoration: none;
 }
 
-.flex-column 
+
+.sidebar
 {
+    display: flex;
     border-style: groove;
     border-color: blue;
     border-radius: 2%;
     background-color: ghostwhite;
+}
+
+.sidebar a
+{
+    color: black;
+    text-decoration: none;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.navbar a.active
+{
+    background-color: green;
+    font-weight: bold;
+    display: flex;
+    padding: .25rem;
+    align-items: center;
 }

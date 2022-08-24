@@ -1,16 +1,13 @@
 import React from 'react';
 import Nav from 'react-bootstrap/Nav';
+import { Link } from 'react-router-dom';
+import { FiInfo } from "react-icons/fi";
 
 function SideBar() {
   return (
     
-    <Nav defaultActiveKey="/home" className="flex-column">
-      <Nav.Link href="/home">Active</Nav.Link>
-      <Nav.Link eventKey="link-1">Link</Nav.Link>
-      <Nav.Link eventKey="link-2">Link</Nav.Link>
-      <Nav.Link eventKey="disabled" disabled>
-        Disabled
-      </Nav.Link>
+    <Nav defaultActiveKey="/home" className="sidebar">
+      <Link to="/about"><FiInfo/> About</Link>
     </Nav>
   );
 }

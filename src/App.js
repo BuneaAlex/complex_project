@@ -2,6 +2,7 @@ import Home from "./routes/home";
 import Database from "./routes/database";
 import Register from "./routes/register";
 import Projects from "./routes/projects";
+import About from "./routes/about";
 import { Routes, Route } from 'react-router-dom';
 import MyNavbar from "./components/navbar";
 import { useEffect } from 'react';
@@ -40,6 +41,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/database" element={<Database />} />
           <Route path="/management" element={<EmployeeManagement />}/>
+          <Route path="/about" element={<About />} />
         </Routes>
       </div>
       
