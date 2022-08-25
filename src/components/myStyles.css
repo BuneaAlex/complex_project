@@ -68,3 +68,15 @@
     padding: .25rem;
     align-items: center;
 }
+
+.settings-navdropdown a.nav-item
+{
+    color:black;
+}
+
+.drop-flag-icon
+{
+    height: 30px;
+    width: 30px;
+    padding-right: 8px;
+}

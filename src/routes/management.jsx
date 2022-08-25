@@ -5,6 +5,7 @@ import { BasicTextField } from '../components/textField';
 import { Button, Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import './management.css'
+import { useTranslation } from "react-i18next";
 
 const EmployeeManagement = () => {
 
@@ -12,6 +13,7 @@ const EmployeeManagement = () => {
     const [disableButtons,setDisableButtons] = useState(true);
     const [showUpdateFields,setShowUpdateFields] = useState(false);
     const employees = useSelector(state => state.counterReducer.employees);
+    const { t } = useTranslation()
 
 
     function refreshPage() {
@@ -81,14 +83,14 @@ const EmployeeManagement = () => {
         return(
             <>
                 
-                <BasicTextField className="grid-textfield2" label="" name="email" placeholder="Enter new email"/>
-                <BasicTextField className="grid-textfield3" label="" name="status" placeholder="Enter new status"/>
+                <BasicTextField className="grid-textfield2" label="" name="email" placeholder={t("Enter new email")}/>
+                <BasicTextField className="grid-textfield3" label="" name="status" placeholder={t("Enter new status")}/>
                 <Button
                 className="grid-confirm-update-button" 
                 variant="primary"
                 onClick={() => handleActualUpdateClick(values)}
                 >
-                    Confirm update
+                    {t("Confirm Update")}
                 </Button>
                         
             </>
@@ -103,7 +105,7 @@ const EmployeeManagement = () => {
                 <Form onSubmit={() => {}}
                     render={({handleSubmit,form, submitting, pristine, values,errors}) => (
                         <BSForm className='management-container' onSubmit={handleSubmit}>
-                            <BasicTextField className="grid-textfield1" label="" name="emp_id" placeholder="Enter ID"/>
+                            <BasicTextField className="grid-textfield1" label="" name="emp_id" placeholder={t("Enter id")}/>
                             <span className="grid-span">{employeeFound}</span>
                             <Button 
                             className="grid-submit-button" 
@@ -111,7 +113,7 @@ const EmployeeManagement = () => {
                             type="submit"
                             onClick={() => handleSubmitClick(values)}
                             >
-                            Search
+                            {t("Search")}
                             </Button>
 
                             <Button
@@ -120,7 +122,7 @@ const EmployeeManagement = () => {
                             disabled={disableButtons}
                             onClick={() => {setShowUpdateFields(true)}}
                             >
-                                Update
+                                {t("Update")}
                             </Button>
 
                             <Button
@@ -129,7 +131,7 @@ const EmployeeManagement = () => {
                             disabled={disableButtons}
                             onClick={() => handleDeleteClick(values)}
                             >
-                                Delete
+                                {t("Delete")}
                             </Button>
                             {showUpdateFields ? <UpdateFields values={values}/> : null} 
                             

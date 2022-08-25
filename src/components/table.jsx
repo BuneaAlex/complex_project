@@ -1,7 +1,9 @@
 import Table from 'react-bootstrap/Table';
+import { useTranslation } from "react-i18next";
 
 function MyTable(lista) 
 {
+  const { t } = useTranslation()
     
   return (
     <>
@@ -9,10 +11,10 @@ function MyTable(lista)
             <thead>
               <tr>
                 <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Gender</th>
-                <th>Email</th>
+                <th>{t("First Name")}</th>
+                <th>{t("Last Name")}</th>
+                <th>{t("Gender")}</th>
+                <th>{t("Email")}</th>
               </tr>
             </thead>
             <tbody>

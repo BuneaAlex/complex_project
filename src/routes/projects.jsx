@@ -8,6 +8,7 @@ import BSForm from 'react-bootstrap/Form';
 import { BasicTextField } from '../components/textField';
 import { Dropdown,DropdownButton,ButtonGroup } from 'react-bootstrap';
 import { Field } from 'react-final-form';
+import { useTranslation } from "react-i18next";
 
 function Projects() {
     const [showForm,setShowForm] = useState(false)
@@ -19,6 +20,7 @@ function Projects() {
     const [selectedMember,setSelectedMember] = useState({})
     const [selectedLeader,setSelectedLeader] = useState({})
     const [selectedMemberList,setSelectedMemberList] = useState([])//the list of members that HAVE been chosen for the project
+    const { t } = useTranslation()
 
 
     const handleClick = () =>
@@ -89,12 +91,12 @@ function Projects() {
                     (<Container>
                         <BSForm onSubmit={handleSubmit} className='grid-projects-form'>
                             
-                            <BasicTextField className="grid-projects-text-field1" name="name" label="Name" placeholder="Enter name"/>
-                            <BasicTextField className="grid-projects-text-field2" name="topic" label="Topic" placeholder="Enter topic"/>
+                            <BasicTextField className="grid-projects-text-field1" name="name" label="Name" placeholder={t("Enter name")}/>
+                            <BasicTextField className="grid-projects-text-field2" name="topic" label="Topic" placeholder={t("Enter topic")}/>
                                 
                             <Field name="leader" className='grid-projects-leader-filter'>
                                 {({input}) => (
-                                    <DropdownButton className="dropdown" as={ButtonGroup} title="Leaders List" id="bg-nested-dropdown">
+                                    <DropdownButton className="dropdown" as={ButtonGroup} title={t("Leaders List")} id="bg-nested-dropdown">
                                     {
                                     leadersList.map((employee,index) => {
                                         return <Dropdown.Item key={index} onClick={() => {handleClickLeader(employee)}}>{employee.first_name}</Dropdown.Item>
@@ -106,7 +108,7 @@ function Projects() {
                             
                             <Field name="member" className='grid-projects-member-filter'>
                             {({input}) => (
-                                 <DropdownButton className="dropdown" as={ButtonGroup} title="Member" id="bg-nested-dropdown">
+                                 <DropdownButton className="dropdown" as={ButtonGroup} title={t("Member")} id="bg-nested-dropdown">
                                  {
                                  membersList.map((employee,index) => {
                                      return <Dropdown.Item key={index} onClick={() => {handleClickMember(employee)}}>{employee.first_name}</Dropdown.Item>
@@ -116,11 +118,11 @@ function Projects() {
                             </Field>
 
                             
-                            <span className='grid-projects-leader'>{`Selected leader: 
+                            <span className='grid-projects-leader'>{`${t("Selected leader:")} 
                             ${selectedLeader.first_name !== undefined ? selectedLeader.first_name : "-"}`}</span>
 
                         
-                            <span className='grid-projects-members'>{`Selected members: 
+                            <span className='grid-projects-members'>{`${t("Selected members:")} 
                             ${selectedMemberList.map(mem => {return mem.first_name})}`}</span>
                                 
                             
@@ -130,7 +132,7 @@ function Projects() {
                                 type="submit" 
                                 onClick={refreshPage}
                                 >
-                                Submit
+                                {t("Submit")}
                             </Button>
                             
                                     

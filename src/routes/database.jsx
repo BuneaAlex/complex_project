@@ -3,6 +3,7 @@ import MyTable from '../components/table';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Container, DropdownButton,ButtonGroup,Dropdown,Form,Button } from 'react-bootstrap';
+import { useTranslation } from "react-i18next";
 
 
 function Database()
@@ -11,7 +12,8 @@ function Database()
     const [searchWord,setSearchWord] = useState('')
     const [employeeSearch,setEmployeeSearch] = useState([]) //employee list searched by name
     const [employeeStatusSearch,setEmployeeStatusSearch] = useState([])//employee list searched by status
-    const statusList = ["New","Terminated","Experienced","Leaving","Active"]
+    const statusList = ["New","Terminated","Experienced","Leaving","Active"];
+    const { t } = useTranslation()
 
     const handleOnChange = (e) =>
     {
@@ -60,20 +62,20 @@ function Database()
               <Form>
                 <Form.Control
                   type="search"
-                  placeholder="Search employee"
+                  placeholder={t("Search employee")}
                   value={searchWord}
                   onChange={handleOnChange}
                   className="me-2"
                   aria-label="Search"
                 />
-                <Button variant="outline-success" onClick={() => handleOnClick(searchWord)}>Search</Button>
+                <Button variant="outline-success" onClick={() => handleOnClick(searchWord)}>{t("Search")}</Button>
               </Form>
               {getEmployeeSearch()}
             </div>
             
            
            <div className='grid-filter'>
-              <DropdownButton as={ButtonGroup} title="Status Filters" id="bg-nested-dropdown">
+              <DropdownButton as={ButtonGroup} title={t("Status Filters")} id="bg-nested-dropdown">
                 {statusList.map((status,index) => {
                   return <Dropdown.Item key={index} onClick={() => statusFilter(status)}>{status}</Dropdown.Item>
                 })}

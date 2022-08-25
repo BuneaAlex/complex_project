@@ -6,6 +6,7 @@ import { Container} from 'react-bootstrap';
 import { Form } from 'react-final-form';
 import { BasicTextField } from '../components/textField';
 import { useState } from 'react';
+import { useTranslation } from "react-i18next";
 
 /*
 const initialState = {
@@ -25,6 +26,7 @@ function Register()
     const count  = employees.length;
     const [submitSafe,setSubmitSafe] = useState(false);
     const [errorMessage,setErrorMessage] = useState([]);//error list from the form
+    const { t } = useTranslation()
 
     //new employee registered
     const refreshData = (data) =>
@@ -77,12 +79,12 @@ function Register()
                 <h1>Register {count}</h1>
                 <BSForm className="grid-register" onSubmit={handleSubmit}>
                     
-                <BasicTextField className="grid-register-text-field1"  name="id" label="Employee id" placeholder="Enter id"/>
-                <BasicTextField className="grid-register-text-field2" name="first_name" label="First name" placeholder="Enter first name"/>
-                <BasicTextField className="grid-register-text-field3" name="last_name" label="Last name" placeholder="Enter last name"/>
-                <BasicTextField className="grid-register-text-field4" name="email" label="Email" placeholder="Enter email"/>
-                <BasicTextField className="grid-register-text-field5" name="gender" label="Gender" placeholder="Enter gender"/>
-                <BasicTextField className="grid-register-text-field6" name="status" label="Status" placeholder="Enter status"/>
+                <BasicTextField className="grid-register-text-field1"  name="id" label="Employee id" placeholder={t("Enter id")}/>
+                <BasicTextField className="grid-register-text-field2" name="first_name" label="First name" placeholder={t("Enter first name")}/>
+                <BasicTextField className="grid-register-text-field3" name="last_name" label="Last name" placeholder={t("Enter last name")}/>
+                <BasicTextField className="grid-register-text-field4" name="email" label="Email" placeholder={t("Enter email")}/>
+                <BasicTextField className="grid-register-text-field5" name="gender" label="Gender" placeholder={t("Enter gender")}/>
+                <BasicTextField className="grid-register-text-field6" name="status" label="Status" placeholder={t("Enter status")}/>
                               
                 <img className='grid-register-img' src='https://picsum.photos/300' alt="" />
                       
@@ -95,7 +97,7 @@ function Register()
                 onClick={() => handleClick(errors)}
                 disabled={submitting}
                     >
-                Submit
+                {t("Submit")}
                 </Button>
                     
                     
