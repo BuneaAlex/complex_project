@@ -7,6 +7,8 @@ import { NavDropdown,Dropdown,Button } from 'react-bootstrap';
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import { US,RO } from 'country-flag-icons/react/3x2'
+import { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 
 const LanguageDropDown = () => {
   return ( 
@@ -30,23 +32,48 @@ const LanguageDropDown = () => {
 
 
 const SettingsDropDown = () => {
+
+  const [activateMenu,setActivateMenu] = useState('main')
+  
   return ( 
       <>
         <NavDropdown title={<FiSettings />} id="basic-nav-dropdown" className='settings-navdropdown'>
+            <CSSTransition in={activateMenu === 'main'} unmountOnExit timeout={500} classNames='menu-primary'>
+              <div className='menu'>
+              <LanguageDropDown className='navitem'/>
 
-              <LanguageDropDown />
-
-              <NavDropdown.Item className='nav-item'>
-                Another action
-              </NavDropdown.Item>
-
-              <NavDropdown.Item className='nav-item'>
+              <div className='navitem'>
+              <Button className='background-button'  onClick={() => {setActivateMenu('background')}}>Background</Button>
+              </div>
+              
+              <NavDropdown.Item className='navitem'>
                 Something
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item className='nav-item'>
+              <NavDropdown.Item className='navitem'>
                 Log out
               </NavDropdown.Item>
+              </div>
+              
+            </CSSTransition>
+
+            <CSSTransition in={activateMenu === 'background'} unmountOnExit timeout={500} classNames='menu-secondary'>
+              <div className='menu'>
+
+              <Button className='navitem' onClick={() => {setActivateMenu('main')}}>Back</Button>
+              
+              <NavDropdown.Item className='navitem'>
+                color1
+              </NavDropdown.Item>
+
+              <NavDropdown.Item className='navitem'>
+                color2
+              </NavDropdown.Item>
+              
+              </div>
+              
+            </CSSTransition>
+              
             </NavDropdown>
       </>
    );

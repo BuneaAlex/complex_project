@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -32,24 +32,26 @@ i18n
     backend:
     {
       loadPath: '/assets/locals/{{lng}}/translation.json'
-    },
-    react: { useSuspense: false}
+    }
 
   });
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+const loadingMarkup = ( <h1>Loading...</h1> )
+
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
-    
-    
-  </React.StrictMode>
+  <Suspense fallback={loadingMarkup}>
+      <React.StrictMode>
+        <Provider store={store}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </Provider>
+      </React.StrictMode>
+  </Suspense>
+  
 );
 
 // If you want to start measuring performance in your app, pass a function
