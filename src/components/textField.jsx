@@ -10,6 +10,7 @@ const AdaptedBSForm = ({input,label,name,...rest}) =>
             type="text"
             name={name}  
             {...input}
+            onChange={(value) => input.onChange(value)}
             {...rest}
             />
     </>     

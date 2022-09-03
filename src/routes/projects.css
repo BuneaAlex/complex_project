@@ -42,25 +42,16 @@
     grid-area: ptf2;
 }
 
-.grid-projects-leader-filter dropdown
+.grid-projects-leader-filter
 {
     grid-area: leader_fil;
 }
 
-.grid-projects-member-filter dropdown
+.grid-projects-member-filter
 {
     grid-area: member_fil;
 }
 
-.grid-projects-leader
-{
-    grid-area: leader;
-}
-
-.grid-projects-members
-{
-    grid-area: members;
-}
 
 .grid-projects-submit-button
 {
@@ -77,8 +68,6 @@
     'ptf1 ptf1'
     'ptf2 ptf2'
     'leader_fil member_fil'
-    'leader leader'
-    'members members'
     'button button'
     ;
 

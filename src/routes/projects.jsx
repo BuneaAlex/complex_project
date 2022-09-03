@@ -3,12 +3,13 @@ import { useSelector } from 'react-redux';
 import { Container,Row,Col,Button } from 'react-bootstrap';
 import './projects.css';
 import ButtonPopOver from '../components/popover';
-import { Form } from 'react-final-form';
+import { Field, Form } from 'react-final-form';
 import BSForm from 'react-bootstrap/Form';
 import { BasicTextField } from '../components/textField';
 import { Dropdown,DropdownButton,ButtonGroup } from 'react-bootstrap';
-import { Field } from 'react-final-form';
 import { useTranslation } from "react-i18next";
+import Multiselect from "multiselect-react-dropdown";
+import { useRef } from 'react';
 
 function Projects() {
     const [showForm,setShowForm] = useState(false)
@@ -17,9 +18,7 @@ function Projects() {
     const statusRequiredLeader = "Experienced"
     const [leadersList,setLeadersList] = useState([]) 
     const [membersList,setMembersList] = useState([]) //the list of members that have NOT been chosen yet for the project
-    const [selectedMember,setSelectedMember] = useState({})
-    const [selectedLeader,setSelectedLeader] = useState({})
-    const [selectedMemberList,setSelectedMemberList] = useState([])//the list of members that HAVE been chosen for the project
+    const selectedMembers = useRef([])
     const { t } = useTranslation()
 
 
@@ -41,28 +40,16 @@ function Projects() {
         }))
     },[employees])
 
-    const handleClickLeader = (employee) =>
-    {
-        setSelectedLeader(employee)
-
-    }
-
-    const handleClickMember = (employee) =>
-    {
-        setSelectedMember(employee)
-        setSelectedMemberList(prevList => [...prevList,employee])
-        setMembersList(prevList => prevList.filter(emp => {return emp !== employee}))
-    }
     
     const createProject = (obj) =>
     {
-        const selectedMemberListNames = selectedMemberList.map(mem => {return mem.first_name})
+        const selectedMemberListNames = selectedMembers.current.map(mem => {return mem.first_name})
 
         const project = {
             id: obj.name,
             name: obj.name,
             topic: obj.topic,
-            leader: selectedLeader.first_name,
+            leader: obj.leader,
             members: selectedMemberListNames
         }
 
@@ -82,9 +69,38 @@ function Projects() {
         fetch('http://localhost:3000/projects',options)
     }
 
+
+
+    const LeaderSelect = ({input}) => {
+        return (
+          <BSForm.Select aria-label="Default select example" className='grid-projects-leader-filter' {...input}>
+            <option>Leaders</option>
+            {leadersList.map((leader,index) => {return <option key={index} value={leader.first_name}>{leader.first_name}</option>})}
+          </BSForm.Select>
+        );
+      }
+
+      const onSelect = (selectedList, selectedItem) => {
+        selectedMembers.current = selectedList
+      }
+
+      const MembersSelect = ({input}) => {
+        return (
+          
+          <Multiselect {...input}
+            options={membersList}
+            displayValue="first_name"
+            onSelect={onSelect}
+            placeholder="Members"
+            showCheckbox
+          />
+        );
+      }
+
     const CreateProjectForm = () => {
 
         return(
+            <>
             <Form 
                 onSubmit={(obj) => {refreshData(createProject(obj))}} 
                 render={({handleSubmit,form, submitting, pristine, values}) => 
@@ -93,38 +109,13 @@ function Projects() {
                             
                             <BasicTextField className="grid-projects-text-field1" name="name" label="Name" placeholder={t("Enter name")}/>
                             <BasicTextField className="grid-projects-text-field2" name="topic" label="Topic" placeholder={t("Enter topic")}/>
-                                
-                            <Field name="leader" className='grid-projects-leader-filter'>
-                                {({input}) => (
-                                    <DropdownButton className="dropdown" as={ButtonGroup} title={t("Leaders List")} id="bg-nested-dropdown">
-                                    {
-                                    leadersList.map((employee,index) => {
-                                        return <Dropdown.Item key={index} onClick={() => {handleClickLeader(employee)}}>{employee.first_name}</Dropdown.Item>
-                                    })}
-                                    </DropdownButton>  
-                            )}
-                            
+
+                            <Field name="leader" component={LeaderSelect}>
                             </Field>
                             
-                            <Field name="member" className='grid-projects-member-filter'>
-                            {({input}) => (
-                                 <DropdownButton className="dropdown" as={ButtonGroup} title={t("Member")} id="bg-nested-dropdown">
-                                 {
-                                 membersList.map((employee,index) => {
-                                     return <Dropdown.Item key={index} onClick={() => {handleClickMember(employee)}}>{employee.first_name}</Dropdown.Item>
-                                 })}
-                                 </DropdownButton>
-                            )}
-                            </Field>
-
-                            
-                            <span className='grid-projects-leader'>{`${t("Selected leader:")} 
-                            ${selectedLeader.first_name !== undefined ? selectedLeader.first_name : "-"}`}</span>
-
-                        
-                            <span className='grid-projects-members'>{`${t("Selected members:")} 
-                            ${selectedMemberList.map(mem => {return mem.first_name})}`}</span>
-                                
+                           
+                            <Field name="members" component={MembersSelect}>
+                            </Field>     
                             
                             <Button 
                                 className="grid-projects-submit-button" 
@@ -141,8 +132,9 @@ function Projects() {
                     </Container>)
                             
                     } />    
-
+        </>
         )
+        
     }
     
 
