@@ -1,5 +1,5 @@
 import './database.css'
-import MyTable from '../components/table';
+import MyTable from '../../components/table';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Container, DropdownButton,ButtonGroup,Dropdown,Form,Button } from 'react-bootstrap';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form } from 'react-final-form';
 import BSForm from 'react-bootstrap/Form'
-import { BasicTextField } from '../components/textField';
+import { BasicTextField } from '../../components/textField';
 import { Button, Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import './management.css'

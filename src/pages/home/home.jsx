@@ -1,7 +1,7 @@
-import CarouselItem from '../components/carousel';
+import CarouselItem from '../../components/carousel';
 import { Accordion, Carousel } from 'react-bootstrap';
 import road from "../pictures/road.jpg";
-import AccordionItem from '../components/accordion';
+import AccordionItem from '../../components/accordion';
 import { Container } from 'react-bootstrap';
 import './home.css'
 

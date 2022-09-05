@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Button } from 'react-bootstrap';
 import { Container} from 'react-bootstrap';
 import { Form } from 'react-final-form';
-import { BasicTextField } from '../components/textField';
+import { BasicTextField } from '../../components/textField';
 import { useState } from 'react';
 import { useTranslation } from "react-i18next";
 
