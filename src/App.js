@@ -1,8 +1,9 @@
-import Home from "./routes/home";
-import Database from "./routes/database";
-import Register from "./routes/register";
-import Projects from "./routes/projects";
-import About from "./routes/about";
+import Home from './pages/home/home'
+import Register from './pages/register/register'
+import Database from './pages/database/database'
+import Projects from './pages/projects/projects'
+import About from './pages/about'
+import EmployeeManagement from './pages/management/management'
 import { Routes, Route } from 'react-router-dom';
 import MyNavbar from "./components/navbar";
 import { useEffect } from 'react';
@@ -10,7 +11,6 @@ import fetchData from './data/fetchData';
 import { useDispatch } from "react-redux";
 import { updateEmployees, updateProjects } from "./data/counterSlice";
 import SideBar from "./components/side_navbar";
-import EmployeeManagement from "./routes/management";
 
 function App() {
   const dispatch = useDispatch();
