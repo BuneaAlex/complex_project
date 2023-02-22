@@ -22,9 +22,6 @@ Open [http://localhost:3001](http://localhost:3001) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+### `npm run e2e`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-
+Launches the cypress for testing.
