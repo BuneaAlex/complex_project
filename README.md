@@ -1,3 +1,4 @@
+Tools used: Redux toolkit, Routing, i18next for translation, react-final-form, bootstrap components, E2E testing with cypress
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
